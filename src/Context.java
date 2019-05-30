@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Context {
 
     private State region1Downloads;
@@ -28,6 +31,11 @@ public class Context {
     private final State user_advanced;
     private final State user_professional;
 
+    // variables
+    int userPoints = 0;
+    int stopPoint = 0;
+    List<String> downloadsQueue = new ArrayList<>();
+
     public Context() {
         this.region1Downloads = downloads_waitingForDownloads;
         this.region2Connection = connection_noConnection;
@@ -35,5 +43,20 @@ public class Context {
         this.region4User = user_checkStatus;
     }
 
+    void setRegion1Downloads(State region1Downloads) {
+        this.region1Downloads = region1Downloads;
+    }
+
+    void setRegion2Connection(State region2Connection) {
+        this.region2Connection = region2Connection;
+    }
+
+    void setRegion3Player(State region3Player) {
+        this.region3Player = region3Player;
+    }
+
+    void setRegion4User(State region4User) {
+        this.region4User = region4User;
+    }
 
 }
