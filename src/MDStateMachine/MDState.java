@@ -1,4 +1,6 @@
-public interface State {
+package MDStateMachine;
+
+public interface MDState {
 
     public void turnOn();
     public void turnOff();
