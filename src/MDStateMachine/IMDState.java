@@ -15,10 +15,12 @@ public interface IMDState {
     void downloadError();
     void errorFixed();
     void downloadFinished();
+    void downloadFailed();
 
     void movieOn();
     void restartMovie();
     void holdMovie();
     void movieOff();
     void resume();
+
     }

@@ -207,4 +207,13 @@ public class Context{
         }
     }
 
+    public void downloadFailed(){
+        if(isOn){
+            downloadsRegion_currentState.downloadFailed();
+            connectionRegion_currentState.downloadFailed();
+            playerRegion_currentState.downloadFailed();
+            userRegion_currentState.downloadFailed();
+        }
+    }
+
 }

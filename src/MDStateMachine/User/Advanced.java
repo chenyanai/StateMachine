@@ -10,4 +10,20 @@ public class Advanced extends AMDSate {
         super(context);
     }
 
+
+    @Override
+    public void downloadFinished() {
+        super.downloadFinished();
+        if (context.userPoints > 7) {
+            context.setPlayerRegion_currentState(context.user_professional);
+        }
+    }
+
+    @Override
+    public void downloadFailed() {
+        super.downloadFailed();
+        if (context.userPoints < 4) {
+            context.setPlayerRegion_currentState(context.user_beginner);
+        }
+    }
 }

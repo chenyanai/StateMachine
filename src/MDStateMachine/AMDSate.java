@@ -63,6 +63,11 @@ public abstract class AMDSate implements IMDState {
     }
 
     @Override
+    public void downloadFailed(){
+
+    }
+
+    @Override
     public void movieOn() {
 
     }

@@ -10,4 +10,11 @@ public class Professional extends AMDSate {
         super(context);
     }
 
+    @Override
+    public void downloadFailed() {
+        super.downloadFailed();
+        if (context.userPoints < 7) {
+            context.setPlayerRegion_currentState(context.user_advanced);
+        }
+    }
 }

@@ -10,4 +10,11 @@ public class Beginner extends AMDSate {
         super(context);
     }
 
+    @Override
+    public void downloadFinished() {
+        super.downloadFinished();
+        if (context.userPoints > 4) {
+            context.setPlayerRegion_currentState(context.user_advanced);
+        }
+    }
 }
