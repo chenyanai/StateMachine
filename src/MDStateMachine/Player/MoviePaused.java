@@ -10,4 +10,28 @@ public class MoviePaused extends AMDSate {
         super(context);
     }
 
+
+    @Override
+    public void resume() {
+        super.resume();
+        context.setPlayerRegion_currentState(context.player_moviePlaying);
+    }
+
+    @Override
+    public void internetOn() {
+        super.internetOn();
+        context.setPlayerRegion_currentState(context.player_moviePlaying);
+    }
+
+    @Override
+    public void errorFixed() {
+        super.errorFixed();
+        context.setPlayerRegion_currentState(context.player_moviePlaying);
+    }
+
+    @Override
+    public void downloadAborted() {
+        super.downloadAborted();
+        context.setPlayerRegion_currentState(context.player_idle);
+    }
 }
