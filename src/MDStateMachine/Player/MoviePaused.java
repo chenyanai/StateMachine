@@ -1,8 +1,20 @@
 package MDStateMachine.Player;
 
-import MDStateMachine.MDState;
+import MDStateMachine.AMDSate;
+import MDStateMachine.Context;
+import MDStateMachine.IMDState;
 
-public class MoviePaused implements MDState {
+public class MoviePaused extends AMDSate implements IMDState {
+
+    public MoviePaused(Context context) {
+        super(context);
+    }
+
+    @Override
+    public void entry() {
+
+    }
+
     @Override
     public void turnOn() {
 

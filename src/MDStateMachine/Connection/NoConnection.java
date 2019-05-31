@@ -1,8 +1,20 @@
 package MDStateMachine.Connection;
 
-import MDStateMachine.MDState;
+import MDStateMachine.AMDSate;
+import MDStateMachine.Context;
+import MDStateMachine.IMDState;
 
-public class NoConnection implements MDState {
+public class NoConnection extends AMDSate implements IMDState {
+
+    public NoConnection(Context context) {super(context);}
+
+    @Override
+    public void entry() {
+        super.entry();
+        // function "CheckConnection()"
+        if(context.isConnection) context.internetOn();
+    }
+
     @Override
     public void turnOn() {
 
@@ -15,7 +27,7 @@ public class NoConnection implements MDState {
 
     @Override
     public void internetOn() {
-
+        context.setConnectionRegion_currentState(context.connection_hasConnection);
     }
 
     @Override

@@ -1,8 +1,20 @@
 package MDStateMachine.Player;
 
-import MDStateMachine.MDState;
+import MDStateMachine.AMDSate;
+import MDStateMachine.Context;
+import MDStateMachine.IMDState;
 
-public class Idle implements MDState {
+public class Idle extends AMDSate implements IMDState {
+
+    public Idle(Context context) {
+        super(context);
+    }
+
+    @Override
+    public void entry() {
+
+    }
+
     @Override
     public void turnOn() {
 

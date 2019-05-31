@@ -1,8 +1,20 @@
 package MDStateMachine.Downloads;
 
-import MDStateMachine.MDState;
+import MDStateMachine.AMDSate;
+import MDStateMachine.Context;
+import MDStateMachine.IMDState;
 
-public class WaitingForDownloads implements MDState {
+public class WaitingForDownloads extends AMDSate implements IMDState {
+
+    public WaitingForDownloads(Context context) {
+        super(context);
+    }
+
+    @Override
+    public void entry() {
+
+    }
+
     @Override
     public void turnOn() {
 

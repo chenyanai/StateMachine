@@ -1,8 +1,20 @@
 package MDStateMachine.Downloads;
 
-import MDStateMachine.MDState;
+import MDStateMachine.AMDSate;
+import MDStateMachine.Context;
+import MDStateMachine.IMDState;
 
-public class DownloadingFile implements MDState {
+public class DownloadingFile extends AMDSate implements IMDState {
+
+    public DownloadingFile(Context context) {
+        super(context);
+    }
+
+    @Override
+    public void entry() {
+
+    }
+
     @Override
     public void turnOn() {
 

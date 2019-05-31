@@ -1,8 +1,20 @@
 package MDStateMachine.User;
 
-import MDStateMachine.MDState;
+import MDStateMachine.AMDSate;
+import MDStateMachine.Context;
+import MDStateMachine.IMDState;
 
-public class CheckStatus implements MDState {
+public class CheckStatus extends AMDSate implements IMDState {
+
+    public CheckStatus(Context context) {
+        super(context);
+    }
+
+    @Override
+    public void entry() {
+
+    }
+
     @Override
     public void turnOn() {
 
