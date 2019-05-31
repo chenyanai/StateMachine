@@ -44,7 +44,7 @@ public class Beginner implements MDState {
     }
 
     @Override
-    public void downloadFineshed() {
+    public void downloadFinished() {
 
     }
 

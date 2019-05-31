@@ -44,7 +44,7 @@ public class NoConnection implements MDState {
     }
 
     @Override
-    public void downloadFineshed() {
+    public void downloadFinished() {
 
     }
 

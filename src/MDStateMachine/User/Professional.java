@@ -44,7 +44,7 @@ public class Professional implements MDState {
     }
 
     @Override
-    public void downloadFineshed() {
+    public void downloadFinished() {
 
     }
 

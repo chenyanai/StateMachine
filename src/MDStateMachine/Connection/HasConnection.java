@@ -44,7 +44,7 @@ public class HasConnection implements MDState {
     }
 
     @Override
-    public void downloadFineshed() {
+    public void downloadFinished() {
 
     }
 

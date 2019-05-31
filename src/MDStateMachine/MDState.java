@@ -11,7 +11,7 @@ public interface MDState {
     public void downloadAborted();
     public void downloadError();
     public void errorFixed();
-    public void downloadFineshed();
+    public void downloadFinished();
 
     public void movieOn();
     public void restartMovie();
