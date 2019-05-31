@@ -10,4 +10,15 @@ public class WaitingForDownloads extends AMDSate {
         super(context);
     }
 
+    @Override
+    public void fileRequest() {
+        super.fileRequest();
+        context.addToQueue();
+    }
+
+    @Override
+    public void downloadAborted() {
+        super.downloadAborted();
+        context.deleteRequestFromQueue();
+    }
 }

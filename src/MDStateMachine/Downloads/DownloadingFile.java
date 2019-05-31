@@ -10,4 +10,35 @@ public class DownloadingFile extends AMDSate {
         super(context);
     }
 
+    @Override
+    public void downloadFinished() {
+        super.downloadFinished();
+    }
+
+    @Override
+    public void downloadAborted() {
+        super.downloadAborted();
+        context.deleteRequestFromQueue();
+        context.downloadFailed();
+    }
+
+    @Override
+    public void startDownloading() {
+        super.startDownloading();
+    }
+
+    @Override
+    public void downloadError() {
+        super.downloadError();
+        context.setDownloadsRegion_currentState(context.downloads_fixingError);
+    }
+
+    @Override
+    public void internetOff() {
+        super.internetOff();
+        context.setDownloadsRegion_currentState(context.downloads_waitingForInternetConnection);
+
+    }
+
+    //TODO: when(!isEmpty(queue))
 }

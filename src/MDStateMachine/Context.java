@@ -6,7 +6,7 @@ import MDStateMachine.Downloads.CheckingDiskSpace;
 import MDStateMachine.Downloads.DownloadingFile;
 import MDStateMachine.Downloads.FixingError;
 import MDStateMachine.Downloads.WaitingForDownloads;
-import MDStateMachine.Downloads.waitingForInternetConnection;
+import MDStateMachine.Downloads.WaitingForInternetConnection;
 import MDStateMachine.Player.DownloadingMovie;
 import MDStateMachine.Player.Idle;
 import MDStateMachine.Player.MoviePaused;
@@ -31,7 +31,7 @@ public class Context{
     public final IMDState downloads_fixingError = new FixingError(this);
     public final IMDState downloads_downloadingFile = new DownloadingFile(this);
     public final IMDState downloads_checkingDiskSpace = new CheckingDiskSpace(this);
-    public final IMDState downloads_waitingForInternetConnection = new waitingForInternetConnection(this);
+    public final IMDState downloads_waitingForInternetConnection = new WaitingForInternetConnection(this);
 
     // connection region states
     public final IMDState connection_noConnection = new NoConnection(this);
@@ -55,7 +55,12 @@ public class Context{
     public int stopPoint = 0;
     public int downloadingPercentage = 0;  // TODO: Need to make sure it works
     public List<String> downloadsQueue = new ArrayList<>();
+    public String downloadRequest = "";
     public boolean isConnection = true;
+    final public int diskCapacity = 100;
+    public int requestNumber = 0;
+    public int diskSpaceTaken = 0;
+
 
     public Context() {
         this.downloadsRegion_currentState = downloads_waitingForDownloads;
@@ -214,6 +219,45 @@ public class Context{
             connectionRegion_currentState.downloadFailed();
             playerRegion_currentState.downloadFailed();
             userRegion_currentState.downloadFailed();
+        }
+    }
+
+    public void startDownloading(){
+        if(isOn){
+            downloadsRegion_currentState.startDownloading();
+            connectionRegion_currentState.startDownloading();
+            playerRegion_currentState.startDownloading();
+            userRegion_currentState.startDownloading();
+        }
+    }
+
+    public void deleteRequestFromQueue(){
+        if(isOn){
+            if(!downloadsQueue.isEmpty()){
+                downloadsQueue.remove(downloadRequest);
+                whenQueueIsNotEmpty();
+            }
+        }
+    }
+
+    public void addToQueue(){
+        if(isOn){
+            downloadsQueue.add("Request #" + Integer.toString(requestNumber));
+            requestNumber += 1;
+            whenQueueIsNotEmpty();
+        }
+    }
+
+    public void whenQueueIsNotEmpty(){
+        if(isOn){
+            if(!downloadsQueue.isEmpty()){      //NOT EMPTY
+                if(downloadsRegion_currentState instanceof WaitingForDownloads){
+                    setDownloadsRegion_currentState(downloads_checkingDiskSpace);
+                }
+                else if(downloadsRegion_currentState instanceof DownloadingFile){
+                    setDownloadsRegion_currentState(downloads_downloadingFile);
+                }
+            }
         }
     }
 
