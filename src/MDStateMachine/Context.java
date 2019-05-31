@@ -240,6 +240,15 @@ public class Context{
         }
     }
 
+    public void dequeue(){
+        if(isOn){
+            if(!downloadsQueue.isEmpty()){
+                downloadsQueue.remove(0);
+                whenQueueIsNotEmpty();
+            }
+        }
+    }
+
     public void addToQueue(){
         if(isOn){
             downloadsQueue.add("Request #" + Integer.toString(requestNumber));
@@ -261,4 +270,22 @@ public class Context{
         }
     }
 
+    public void tm(int seconds) {
+        if (isOn) {
+            if (seconds % 3 == 0) {
+                if (downloadsRegion_currentState instanceof FixingError) {
+                    // TODO: DeleteFile()???
+                    downloadFailed();
+                    setDownloadsRegion_currentState(downloads_waitingForDownloads);
+                }
+            }
+            if (seconds % 4 == 0) {
+                if (downloadsRegion_currentState instanceof CheckingDiskSpace && (diskCapacity - diskSpaceTaken == 0)) {
+                    dequeue();
+                    downloadFailed();
+                    setDownloadsRegion_currentState(downloads_waitingForDownloads);
+                }
+            }
+        }
+    }
 }
