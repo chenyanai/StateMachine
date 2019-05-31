@@ -4,18 +4,15 @@ import MDStateMachine.AMDSate;
 import MDStateMachine.Context;
 import MDStateMachine.IMDState;
 
-public class FixingError extends AMDSate  {
+public class WaitingForInternetConnection extends AMDSate {
 
-    public FixingError(Context context) {
+    public WaitingForInternetConnection(Context context) {
         super(context);
-
     }
 
     @Override
-    public void errorFixed() {
-        super.errorFixed();
+    public void internetOn() {
+        super.internetOn();
         context.setDownloadsRegion_currentState(context.downloads_downloadingFile);
     }
-
-
 }
