@@ -16,6 +16,7 @@ public interface IMDState {
     void errorFixed();
     void downloadFinished();
     void downloadFailed();
+    void startDownloading();
 
     void movieOn();
     void restartMovie();

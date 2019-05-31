@@ -11,5 +11,9 @@ public class Idle extends AMDSate  {
     }
 
 
-
+    @Override
+    public void startDownloading() {
+        super.startDownloading();
+        context.setPlayerRegion_currentState(context.player_downloadingMovie);
+    }
 }

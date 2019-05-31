@@ -21,10 +21,10 @@ import java.util.List;
 
 public class Context{
 
-    private IMDState downloadsRegion_currentState;
-    private IMDState connectionRegion_currentState;
-    private IMDState playerRegion_currentState;
-    private IMDState userRegion_currentState;
+    public IMDState downloadsRegion_currentState;
+    public IMDState connectionRegion_currentState;
+    public IMDState playerRegion_currentState;
+    public IMDState userRegion_currentState;
 
     // downloads region states
     public final IMDState downloads_waitingForDownloads = new WaitingForDownloads(this);
@@ -53,6 +53,7 @@ public class Context{
     private boolean isOn = false;
     public int userPoints = 0;
     public int stopPoint = 0;
+    public int downloadingPercentage = 0;  // TODO: Need to make sure it works
     public List<String> downloadsQueue = new ArrayList<>();
     public boolean isConnection = true;
 
