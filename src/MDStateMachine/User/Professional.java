@@ -17,4 +17,12 @@ public class Professional extends AMDSate {
             context.setUserRegion_currentState(context.user_advanced);
         }
     }
+
+    @Override
+    public void downloadAborted() {
+        super.downloadFailed();
+        if (context.userPoints < 7) {
+            context.setUserRegion_currentState(context.user_advanced);
+        }
+    }
 }

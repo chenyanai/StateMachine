@@ -26,7 +26,7 @@ public class WaitingForDownloads extends AMDSate {
     public void downloadAborted() {
         super.downloadAborted();
         context.deleteRequestFromQueue();
-        context.userPoints--;
+        if(context.userPoints>0 && !context.downloadsQueue.isEmpty()) context.userPoints--;
 
     }
 }
