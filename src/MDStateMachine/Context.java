@@ -290,7 +290,7 @@ public class Context{
                 if (downloadsRegion_currentState instanceof FixingError) {
                     deleteFile();
                     downloadFailed();
-                    userPoints--;
+                    if(userPoints >0) userPoints--;
                     setDownloadsRegion_currentState(downloads_waitingForDownloads);
                 }
             }
@@ -298,6 +298,9 @@ public class Context{
                 if (downloadsRegion_currentState instanceof CheckingDiskSpace && (diskCapacity - diskSpaceTaken < requestSize)) {
                     dequeue();
                     downloadFailed();
+                    if(userPoints>0) {
+                        userPoints--;
+                    }
                     setDownloadsRegion_currentState(downloads_waitingForDownloads);
                 }
             }
