@@ -17,7 +17,7 @@ public class CheckStatus extends AMDSate {
             context.setUserRegion_currentState(context.user_beginner);
         } else if (context.userPoints < 7) {
             context.setUserRegion_currentState(context.user_advanced);
-        } else if (context.userPoints > 7) {
+        } else if (context.userPoints >= 7) {
             context.setUserRegion_currentState(context.user_professional);
         }
     }

@@ -14,7 +14,7 @@ public class Advanced extends AMDSate {
     @Override
     public void downloadFinished() {
         super.downloadFinished();
-        if (context.userPoints > 7) {
+        if (context.userPoints >= 7) {
             context.setUserRegion_currentState(context.user_professional);
         }
     }
