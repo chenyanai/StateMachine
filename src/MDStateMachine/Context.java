@@ -68,10 +68,10 @@ public class Context{
         this.connectionRegion_currentState = connection_noConnection;
         this.playerRegion_currentState = player_idle;
         this.userRegion_currentState = user_checkStatus;
-        setDownloadsRegion_currentState(downloads_waitingForDownloads);
-        setConnectionRegion_currentState(connection_noConnection);
-        setPlayerRegion_currentState(player_idle);
-        setUserRegion_currentState(user_checkStatus);
+        downloadsRegion_currentState.entry();
+        connectionRegion_currentState.entry();
+        playerRegion_currentState.entry();
+        userRegion_currentState.entry();
     }
 
     public void setDownloadsRegion_currentState(IMDState newState) {
