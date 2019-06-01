@@ -290,6 +290,7 @@ public class Context{
                 if (downloadsRegion_currentState instanceof FixingError) {
                     deleteFile();
                     downloadFailed();
+                    downloadAborted();
                     if(userPoints >0) userPoints--;
                     setDownloadsRegion_currentState(downloads_waitingForDownloads);
                 }
