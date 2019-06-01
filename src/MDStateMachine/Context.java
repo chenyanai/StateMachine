@@ -295,7 +295,7 @@ public class Context{
                 }
             }
             if (seconds % 4 == 0) {
-                if (downloadsRegion_currentState instanceof CheckingDiskSpace && (diskCapacity - diskSpaceTaken > requestSize)) {
+                if (downloadsRegion_currentState instanceof CheckingDiskSpace && (diskCapacity - diskSpaceTaken < requestSize)) {
                     dequeue();
                     downloadFailed();
                     setDownloadsRegion_currentState(downloads_waitingForDownloads);
