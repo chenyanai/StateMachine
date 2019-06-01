@@ -35,8 +35,6 @@ public class Main {
         while (flag){
 
             event = sc.nextInt();
-
-            System.out.println(event);
             switch (event){
 
                 case 0: {
@@ -49,15 +47,19 @@ public class Main {
                         context.diskCapacity=100;
                     }
                     context.turnOn();
+                    break;
                 }
                 case 1:{
                     context.turnOff();
+                    break;
                 }
                 case 2:{
                     context.internetOn();
+                    break;
                 }
                 case 3:{
                     context.internetOff();
+                    break;
                 }
                 case 4:{
                     int size;
@@ -65,43 +67,56 @@ public class Main {
                     size=sc.nextInt();
                     context.setRequestSize(size);
                     context.fileRequest();
+                    break;
                 }
                 case 5:{
                     context.downloadAborted();
+                    break;
                 }
                 case 6:{
                     context.downloadFinished();
+                    break;
                 }
                 case 7:{
                     context.downloadError();
+                    break;
                 }
 
                 case 8:{
                     context.errorFixed();
+                    break;
                 }
                 case 9:{
                     context.movieOn();
+                    break;
                 }
                 case 10: {
                     context.movieOff();
+                    break;
                 }
                 case 11: {
                     context.restartMovie();
+                    break;
                 }
                 case 12: {
                     context.resume();
+                    break;
                 }
                 case 13: {
                     context.holdMovie();
+                    break;
                 }
                 case 14: {
                     context.time();
+                    break;
                 }
                 case 15: {
                     System.exit(0);
+                    break;
                 }
                 default: {
                     System.out.println("please enter a valid choice");
+                    break;
                 }
 
             }
@@ -123,7 +138,6 @@ public class Main {
                     "13) holdMovie\n" +
                     "14) wait 1 second\n" +
                     "15) exit program\n");
-
         }
 
 

@@ -64,10 +64,10 @@ public class Context{
 
 
     public Context() {
-//        this.downloadsRegion_currentState = downloads_waitingForDownloads;
-//        this.connectionRegion_currentState = connection_noConnection;
-//        this.playerRegion_currentState = player_idle;
-//        this.userRegion_currentState = user_checkStatus;
+        this.downloadsRegion_currentState = downloads_waitingForDownloads;
+        this.connectionRegion_currentState = connection_noConnection;
+        this.playerRegion_currentState = player_idle;
+        this.userRegion_currentState = user_checkStatus;
         setDownloadsRegion_currentState(downloads_waitingForDownloads);
         setConnectionRegion_currentState(connection_noConnection);
         setPlayerRegion_currentState(player_idle);
