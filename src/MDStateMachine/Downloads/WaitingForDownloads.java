@@ -14,7 +14,6 @@ public class WaitingForDownloads extends AMDSate {
     public void entry() {
         super.entry();
         context.downloadingPercentage = 0;
-
     }
 
     @Override
@@ -27,5 +26,7 @@ public class WaitingForDownloads extends AMDSate {
     public void downloadAborted() {
         super.downloadAborted();
         context.deleteRequestFromQueue();
+        context.userPoints--;
+
     }
 }
