@@ -308,7 +308,7 @@ public class Context{
                 else if (userRegion_currentState instanceof  Advanced){downloadingSpeed = 1.2;}
                 else if (userRegion_currentState instanceof  Professional){downloadingSpeed = 1.5;}
 
-                int percentageDownloaded = (int)(downloadingSpeed/requestSize)*100;
+                int percentageDownloaded = (int)Math.ceil(((downloadingSpeed/requestSize)*100));
                 downloadingPercentage += percentageDownloaded;
 
                 if(downloadingPercentage >= 100){
