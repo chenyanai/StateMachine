@@ -55,7 +55,7 @@ public class Context{
     public int stopPoint = 0;
     public int downloadingPercentage = 0;
     public List<String> downloadsQueue = new ArrayList<>();
-    public boolean isConnection = true;
+    public boolean isConnection = false;
     public int diskCapacity = 100;
     public int requestNumber = 0;
     public int diskSpaceTaken = 0;
