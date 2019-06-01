@@ -14,7 +14,7 @@ public class DownloadingMovie extends AMDSate  {
     @Override
     public void movieOn() {
         super.movieOn();
-        if (context.downloadsRegion_currentState instanceof DownloadingFile && context.downloadingPercentage > 20){
+        if (context.downloadsRegion_currentState instanceof DownloadingFile && context.downloadingPercentage >= 20){
             context.stopPoint = 0;
             context.setPlayerRegion_currentState(context.player_moviePlaying);
         }
