@@ -1,7 +1,10 @@
 package MDStateMachine;
 
+import java.util.Arrays;
+
 public abstract class AMDSate implements IMDState {
     protected Context context;
+    String [] s = getClass().toString().split("\\.");
 
     public AMDSate(Context context) {
         this.context = context;
@@ -9,12 +12,13 @@ public abstract class AMDSate implements IMDState {
 
     @Override
     public void entry() {
-        System.out.println("enter " + getClass().toString().replace("class MDStateMachine.", "") + " state");
+
+        System.out.println("enter " + s[s.length-1] + " state");
     }
 
     @Override
     public void exit() {
-        System.out.println("exit " + getClass().toString().replace("class MDStateMachine.", "") + " state");
+        System.out.println("exit " + s[s.length-1] + " state");
     }
 
     @Override
