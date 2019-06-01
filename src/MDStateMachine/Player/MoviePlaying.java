@@ -32,9 +32,7 @@ public class MoviePlaying extends AMDSate  {
     public void entry() {
         super.entry();
         //TODO implement (do not delete call to super)
-        moviePlayTime = context.stopPoint;
-        startTime = new Date();
-        throw new NotImplementedException();
+//        moviePlayTime = context.stopPoint;
     }
 
     @Override
