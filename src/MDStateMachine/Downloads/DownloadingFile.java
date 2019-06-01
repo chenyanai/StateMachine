@@ -31,9 +31,8 @@ public class DownloadingFile extends AMDSate {
 
     @Override
     public void startDownloading() {
-
         super.startDownloading();
-        context.deleteRequestFromQueue();
+        context.dequeue();
     }
 
     @Override

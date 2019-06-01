@@ -55,7 +55,6 @@ public class Context{
     public int stopPoint = 0;
     public int downloadingPercentage = 0;
     public List<String> downloadsQueue = new ArrayList<>();
-    public String downloadRequest = "";
     public boolean isConnection = true;
     public int diskCapacity = 100;
     public int requestNumber = 0;
@@ -236,7 +235,8 @@ public class Context{
     public void deleteRequestFromQueue(){
         if(isOn){
             if(!downloadsQueue.isEmpty()){
-                downloadsQueue.remove(downloadRequest);
+//                downloadsQueue.remove(downloadRequest);
+                downloadsQueue.remove(0);
                 whenQueueIsNotEmpty();
             }
         }
@@ -265,24 +265,28 @@ public class Context{
                 if(downloadsRegion_currentState instanceof WaitingForDownloads){
                     setDownloadsRegion_currentState(downloads_checkingDiskSpace);
                 }
-                else if(downloadsRegion_currentState instanceof DownloadingFile){
-                    setDownloadsRegion_currentState(downloads_downloadingFile);
-                }
             }
+        }
+    }
+
+    public void deleteFile(){
+        if(isOn) {
+            requestSize = 0;
         }
     }
 
     public void time() {
         if (isOn) {
             seconds++;
-            if (seconds == 3) {
+            if (seconds % 3 == 0) {
                 if (downloadsRegion_currentState instanceof FixingError) {
-                    // TODO: DeleteFile()???
+                    deleteFile();
                     downloadFailed();
+                    userPoints--;
                     setDownloadsRegion_currentState(downloads_waitingForDownloads);
                 }
             }
-            if (seconds == 4) {
+            if (seconds % 4 == 0) {
                 if (downloadsRegion_currentState instanceof CheckingDiskSpace && (diskCapacity - diskSpaceTaken > requestSize)) {
                     dequeue();
                     downloadFailed();
@@ -296,10 +300,11 @@ public class Context{
                 else if (userRegion_currentState instanceof  Advanced){downloadingSpeed = 1.2;}
                 else if (userRegion_currentState instanceof  Professional){downloadingSpeed = 1.5;}
 
-                double percentageDownloaded = downloadingSpeed/requestSize;
+                int percentageDownloaded = (int)(downloadingSpeed/requestSize)*100;
                 downloadingPercentage += percentageDownloaded;
 
-                if(downloadingPercentage >= 1){
+                if(downloadingPercentage >= 100){
+                    diskSpaceTaken += requestSize;
                     downloadFinished();
                 }
             }
@@ -308,9 +313,12 @@ public class Context{
     }
 
     public void whenDiskSpaceNotFullHasConnection(){
-        if(downloadsRegion_currentState instanceof CheckingDiskSpace && connectionRegion_currentState instanceof HasConnection && (diskCapacity - diskSpaceTaken > requestSize)){
-            startDownloading();
-            setDownloadsRegion_currentState(downloads_downloadingFile);
+        if(isOn) {
+            if (downloadsRegion_currentState instanceof CheckingDiskSpace && connectionRegion_currentState instanceof HasConnection && (diskCapacity - diskSpaceTaken > requestSize)) {
+                setDownloadsRegion_currentState(downloads_downloadingFile);
+                downloadingPercentage = 0;
+                startDownloading();
+            }
         }
     }
 

@@ -11,6 +11,13 @@ public class WaitingForDownloads extends AMDSate {
     }
 
     @Override
+    public void entry() {
+        super.entry();
+        context.downloadingPercentage = 0;
+
+    }
+
+    @Override
     public void fileRequest() {
         super.fileRequest();
         context.addToQueue();
