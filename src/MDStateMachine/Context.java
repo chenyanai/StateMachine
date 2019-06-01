@@ -53,13 +53,15 @@ public class Context{
     private boolean isOn = false;
     public int userPoints = 0;
     public int stopPoint = 0;
-    public int downloadingPercentage = 0;  // TODO: Need to make sure it works
+    public int downloadingPercentage = 0;
     public List<String> downloadsQueue = new ArrayList<>();
     public String downloadRequest = "";
     public boolean isConnection = true;
-    final public int diskCapacity = 100;
+    public int diskCapacity = 100;
     public int requestNumber = 0;
     public int diskSpaceTaken = 0;
+    public int requestSize = 0;
+    public int seconds = 0;
 
 
     public Context() {
@@ -270,22 +272,53 @@ public class Context{
         }
     }
 
-    public void tm(int seconds) {
+    public void time() {
         if (isOn) {
-            if (seconds % 3 == 0) {
+            seconds++;
+            if (seconds == 3) {
                 if (downloadsRegion_currentState instanceof FixingError) {
                     // TODO: DeleteFile()???
                     downloadFailed();
                     setDownloadsRegion_currentState(downloads_waitingForDownloads);
                 }
             }
-            if (seconds % 4 == 0) {
-                if (downloadsRegion_currentState instanceof CheckingDiskSpace && (diskCapacity - diskSpaceTaken == 0)) {
+            if (seconds == 4) {
+                if (downloadsRegion_currentState instanceof CheckingDiskSpace && (diskCapacity - diskSpaceTaken > requestSize)) {
                     dequeue();
                     downloadFailed();
                     setDownloadsRegion_currentState(downloads_waitingForDownloads);
                 }
             }
+            if (downloadsRegion_currentState instanceof DownloadingFile){
+                double downloadingSpeed = 0;
+
+                if(userRegion_currentState instanceof  Beginner){downloadingSpeed = 1;}
+                else if (userRegion_currentState instanceof  Advanced){downloadingSpeed = 1.2;}
+                else if (userRegion_currentState instanceof  Professional){downloadingSpeed = 1.5;}
+
+                double percentageDownloaded = downloadingSpeed/requestSize;
+                downloadingPercentage += percentageDownloaded;
+
+                if(downloadingPercentage >= 1){
+                    downloadFinished();
+                }
+            }
+
         }
+    }
+
+    public void whenDiskSpaceNotFullHasConnection(){
+        if(downloadsRegion_currentState instanceof CheckingDiskSpace && connectionRegion_currentState instanceof HasConnection && (diskCapacity - diskSpaceTaken > requestSize)){
+            startDownloading();
+            setDownloadsRegion_currentState(downloads_downloadingFile);
+        }
+    }
+
+    public void setDiskCapacity(int size){
+        diskCapacity = size;
+    }
+
+    public void setRequestSize(int size){
+        requestSize = size;
     }
 }

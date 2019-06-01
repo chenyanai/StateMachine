@@ -18,6 +18,7 @@ public class NoConnection extends AMDSate  {
     @Override
     public void internetOn() {
         context.setConnectionRegion_currentState(context.connection_hasConnection);
+        context.whenDiskSpaceNotFullHasConnection();
     }
 
 }

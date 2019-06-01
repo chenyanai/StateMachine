@@ -9,10 +9,12 @@ public class CheckingDiskSpace extends AMDSate {
 
     public CheckingDiskSpace(Context context) {
         super(context);
-        if(context.connectionRegion_currentState instanceof HasConnection && (context.diskCapacity - context.diskSpaceTaken > 0)){
-            context.startDownloading();
-            context.setDownloadsRegion_currentState(context.downloads_downloadingFile);
-        }
     }
 
+    @Override
+    public void entry() {
+        super.entry();
+        context.seconds = 0;
+        context.whenDiskSpaceNotFullHasConnection();
+    }
 }

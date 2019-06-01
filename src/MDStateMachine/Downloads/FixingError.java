@@ -12,6 +12,12 @@ public class FixingError extends AMDSate  {
     }
 
     @Override
+    public void entry() {
+        super.entry();
+        context.seconds = 0;
+    }
+
+    @Override
     public void errorFixed() {
         super.errorFixed();
         context.setDownloadsRegion_currentState(context.downloads_downloadingFile);
