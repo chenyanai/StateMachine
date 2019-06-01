@@ -55,7 +55,6 @@ public class Context{
     public int stopPoint = 0;
     public int downloadingPercentage = 0;
     public List<String> downloadsQueue = new ArrayList<>();
-    public String downloadRequest = "";
     public boolean isConnection = true;
     public int diskCapacity = 100;
     public int requestNumber = 0;
@@ -266,9 +265,6 @@ public class Context{
                 if(downloadsRegion_currentState instanceof WaitingForDownloads){
                     setDownloadsRegion_currentState(downloads_checkingDiskSpace);
                 }
-                else if(downloadsRegion_currentState instanceof DownloadingFile){
-                    setDownloadsRegion_currentState(downloads_downloadingFile);
-                }
             }
         }
     }
@@ -286,6 +282,7 @@ public class Context{
                 if (downloadsRegion_currentState instanceof FixingError) {
                     deleteFile();
                     downloadFailed();
+                    userPoints--;
                     setDownloadsRegion_currentState(downloads_waitingForDownloads);
                 }
             }
@@ -308,7 +305,6 @@ public class Context{
 
                 if(downloadingPercentage >= 100){
                     diskSpaceTaken += requestSize;
-                    downloadingPercentage = 0;
                     downloadFinished();
                 }
             }
@@ -320,6 +316,7 @@ public class Context{
         if(isOn) {
             if (downloadsRegion_currentState instanceof CheckingDiskSpace && connectionRegion_currentState instanceof HasConnection && (diskCapacity - diskSpaceTaken > requestSize)) {
                 setDownloadsRegion_currentState(downloads_downloadingFile);
+                downloadingPercentage = 0;
                 startDownloading();
             }
         }
