@@ -8,9 +8,11 @@ public class Main {
 
         Context context = new Context();
         Scanner sc = new Scanner(System.in);
+        Scanner cSc = new Scanner(System.in);
 
         boolean flag =true;
         int event;
+        String ch;
         System.out.println("Welcome!");
         System.out.println("Choose an event you want to launch:\n" +
                 "0)  turnON\n" +
@@ -32,12 +34,69 @@ public class Main {
         while (flag){
 
             event = sc.nextInt();
+
             System.out.println(event);
             switch (event){
+
                 case 0: {
-                    System.out.println("enter disk capacity:");
-                    context.diskCapacity=sc.nextInt();
+                    System.out.println("do you want to change disk capacity from 100(y/n)?");
+                    ch=cSc.nextLine();
+                    if(ch.equals("y") || ch.equals("y\n")){
+                        System.out.println("enter new disk capacity:");
+                        context.diskCapacity=sc.nextInt();
+                    }else {
+                        context.diskCapacity=100;
+                    }
+                    context.isOn=true;
                 }
+                case 1:{
+                    context.isOn=false;
+                }
+                case 2:{
+                    context.internetOn();
+                }
+                case 3:{
+                    context.internetOff();
+                }
+                case 4:{
+                    int size;
+                    System.out.println("enter file size:");
+                    size=sc.nextInt();
+                    context.setRequestSize(size);
+                    context.fileRequest();
+                }
+                case 5:{
+                    context.downloadAborted();
+                }
+                case 6:{
+                    context.downloadFinished();
+                }
+                case 7:{
+                    context.downloadError();
+                }
+
+                case 8:{
+                    context.errorFixed();
+                }
+                case 9:{
+                    context.movieOn();
+                }
+                case 10: {
+                    context.movieOff();
+                }
+                case 11: {
+                    context.restartMovie();
+                }
+                case 12: {
+                    context.resume();
+                }
+                case 13: {
+                    context.holdMovie();
+                }
+                case 14: {
+                    context.time();
+                }
+
             }
 
 

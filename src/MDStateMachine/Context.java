@@ -50,7 +50,7 @@ public class Context{
     public final IMDState user_professional = new Professional(this);
 
     // variables
-    private boolean isOn = false;
+    public boolean isOn = false;
     public int userPoints = 0;
     public int stopPoint = 0;
     public int downloadingPercentage = 0;
