@@ -15,7 +15,6 @@ public class DownloadingFile extends AMDSate {
         super.downloadFinished();
         context.userPoints++;
         context.setDownloadsRegion_currentState(context.downloads_waitingForDownloads);
-
     }
 
     @Override
