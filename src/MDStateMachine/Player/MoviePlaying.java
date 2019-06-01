@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class MoviePlaying extends AMDSate  {
 
-    int moviePlayTime = 0;
+    long moviePlayTime = 0;
     Date startTime;
 
     public MoviePlaying(Context context) {
@@ -45,24 +45,24 @@ public class MoviePlaying extends AMDSate  {
     @Override
     public void holdMovie() {
         super.holdMovie();
-//        moviePlayTime += getDateDiff(new Date(), startTime, TimeUnit.MINUTES);
-//        context.stopPoint = moviePlayTime;
+        moviePlayTime += getDateDiff(new Date(), startTime, TimeUnit.SECONDS);
+        context.stopPoint = moviePlayTime;
         context.setPlayerRegion_currentState(context.player_moviePaused);
     }
 
     @Override
     public void internetOff() {
         super.internetOff();
-//        moviePlayTime += getDateDiff(new Date(), startTime, TimeUnit.MINUTES);
-//        context.stopPoint = moviePlayTime;
+        moviePlayTime += getDateDiff(new Date(), startTime, TimeUnit.SECONDS);
+        context.stopPoint = moviePlayTime;
         context.setPlayerRegion_currentState(context.player_moviePaused);
     }
 
     @Override
     public void downloadError() {
         super.downloadError();
-//        moviePlayTime += getDateDiff(new Date(), startTime, TimeUnit.MINUTES);
-//        context.stopPoint = moviePlayTime;
+        moviePlayTime += getDateDiff(new Date(), startTime, TimeUnit.SECONDS);
+        context.stopPoint = moviePlayTime;
         context.setPlayerRegion_currentState(context.player_moviePaused);
     }
 

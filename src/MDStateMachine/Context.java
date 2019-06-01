@@ -52,7 +52,7 @@ public class Context{
     // variables
     public boolean isOn = false;
     public int userPoints = 0;
-    public int stopPoint = 0;
+    public long stopPoint = 0;
     public int downloadingPercentage = 0;
     public List<String> downloadsQueue = new ArrayList<>();
     public boolean isConnection = false;
