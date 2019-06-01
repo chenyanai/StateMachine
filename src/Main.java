@@ -29,7 +29,8 @@ public class Main {
                 "11) restartMovie\n" +
                 "12) resume\n" +
                 "13) holdMovie\n" +
-                "14) wait 1 second\n");
+                "14) wait 1 second\n" +
+                "15) exit program\n");
 
         while (flag){
 
@@ -47,10 +48,10 @@ public class Main {
                     }else {
                         context.diskCapacity=100;
                     }
-                    context.isOn=true;
+                    context.turnOn();
                 }
                 case 1:{
-                    context.isOn=false;
+                    context.turnOff();
                 }
                 case 2:{
                     context.internetOn();
@@ -96,11 +97,32 @@ public class Main {
                 case 14: {
                     context.time();
                 }
+                case 15: {
+                    System.exit(0);
+                }
+                default: {
+                    System.out.println("please enter a valid choice");
+                }
 
             }
 
-
-
+            System.out.println("Choose an event you want to launch:\n" +
+                    "0)  turnON\n" +
+                    "1)  turnOff\n" +
+                    "2)  internetOn\n" +
+                    "3)  internetOff\n" +
+                    "4)  fileRequest\n" +
+                    "5)  downloadAborted\n" +
+                    "6)  downloadFinished\n" +
+                    "7)  downloadError\n" +
+                    "8)  errorFixed\n" +
+                    "9)  movieOn\n" +
+                    "10) movieOff\n" +
+                    "11) restartMovie\n" +
+                    "12) resume\n" +
+                    "13) holdMovie\n" +
+                    "14) wait 1 second\n" +
+                    "15) exit program\n");
 
         }
 
