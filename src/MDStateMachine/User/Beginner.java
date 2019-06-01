@@ -13,7 +13,7 @@ public class Beginner extends AMDSate {
     @Override
     public void downloadFinished() {
         super.downloadFinished();
-        if (context.userPoints > 4) {
+        if (context.userPoints >= 4) {
             context.setUserRegion_currentState(context.user_advanced);
         }
     }

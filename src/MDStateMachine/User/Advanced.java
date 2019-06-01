@@ -26,4 +26,12 @@ public class Advanced extends AMDSate {
             context.setUserRegion_currentState(context.user_beginner);
         }
     }
+
+    @Override
+    public void downloadAborted() {
+        super.downloadFailed();
+        if (context.userPoints < 4) {
+            context.setUserRegion_currentState(context.user_beginner);
+        }
+    }
 }
