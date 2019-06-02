@@ -1,5 +1,6 @@
 import MDStateMachine.Context;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -11,7 +12,7 @@ public class Main {
         Scanner cSc = new Scanner(System.in);
 
         boolean flag =true;
-        int event;
+
         String ch;
         System.out.println("Welcome!");
         System.out.println("Choose an event you want to launch:\n" +
@@ -33,14 +34,20 @@ public class Main {
                 "15) exit program\n");
 
         while (flag){
+            int event;
+            String valid=cSc.nextLine();
+            try {
+                event = Integer.parseInt(valid);
+            }catch (NumberFormatException e){
+                event= -1;
+            }
 
-            event = sc.nextInt();
             switch (event){
 
                 case 0: {
                     System.out.println("do you want to change disk capacity from 100(y/n)?");
                     ch=cSc.nextLine();
-                    if(ch.equals("y") || ch.equals("y\n")){
+                    if(ch.equals("y") || ch.equals("y\n") || ch.equals("Y") || ch.equals("Y\n")){
                         System.out.println("enter new disk capacity:");
                         context.diskCapacity=sc.nextInt();
                     }else {
@@ -121,6 +128,7 @@ public class Main {
 
             }
 
+
             System.out.println("Choose an event you want to launch:\n" +
                     "0)  turnON\n" +
                     "1)  turnOff\n" +
@@ -139,7 +147,8 @@ public class Main {
                     "14) wait 1 second\n" +
                     "15) exit program\n");
         }
-
-
     }
+
+
 }
+

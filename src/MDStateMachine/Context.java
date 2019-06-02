@@ -98,14 +98,16 @@ public class Context{
     //  methods for receiving events //
 
     public void turnOn() {
-        isOn = true;
-        this.connectionRegion_currentState = connection_noConnection;
-        this.playerRegion_currentState = player_idle;
-        this.userRegion_currentState = user_checkStatus;
-        downloadsRegion_currentState.entry();
-        connectionRegion_currentState.entry();
-        playerRegion_currentState.entry();
-        userRegion_currentState.entry();
+        if(!isOn) {
+            isOn = true;
+            this.connectionRegion_currentState = connection_noConnection;
+            this.playerRegion_currentState = player_idle;
+            this.userRegion_currentState = user_checkStatus;
+            downloadsRegion_currentState.entry();
+            connectionRegion_currentState.entry();
+            playerRegion_currentState.entry();
+            userRegion_currentState.entry();
+        }
     }
 
     public void turnOff() {
