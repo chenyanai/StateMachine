@@ -38,31 +38,30 @@ public class MoviePlaying extends AMDSate  {
     @Override
     public void restartMovie() {
         super.restartMovie();
-        context.stopPoint = 0;
+//        context.stopPoint = 0;
         context.setPlayerRegion_currentState(this);
     }
 
     @Override
     public void holdMovie() {
         super.holdMovie();
-        moviePlayTime += getDateDiff(new Date(), startTime, TimeUnit.SECONDS);
-        context.stopPoint = moviePlayTime;
+//        moviePlayTime += getDateDiff(new Date(), startTime, TimeUnit.SECONDS);
+//        context.stopPoint = moviePlayTime;
         context.setPlayerRegion_currentState(context.player_moviePaused);
     }
 
     @Override
     public void internetOff() {
         super.internetOff();
-        moviePlayTime += getDateDiff(new Date(), startTime, TimeUnit.SECONDS);
-        context.stopPoint = moviePlayTime;
+//        moviePlayTime += getDateDiff(new Date(), startTime, TimeUnit.SECONDS);
+//        context.stopPoint = moviePlayTime;
         context.setPlayerRegion_currentState(context.player_moviePaused);
     }
 
     @Override
     public void downloadError() {
         super.downloadError();
-        moviePlayTime += getDateDiff(new Date(), startTime, TimeUnit.SECONDS);
-        context.stopPoint = moviePlayTime;
+//
         context.setPlayerRegion_currentState(context.player_moviePaused);
     }
 

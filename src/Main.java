@@ -15,7 +15,8 @@ public class Main {
 
         String ch;
         System.out.println("Welcome!");
-        System.out.println("Choose an event you want to launch:\n" +
+        System.out.println("\n=========================================================" +
+                "\nChoose an event you want to launch:\n" +
                 "0)  turnON\n" +
                 "1)  turnOff\n" +
                 "2)  internetOn\n" +
@@ -31,7 +32,8 @@ public class Main {
                 "12) resume\n" +
                 "13) holdMovie\n" +
                 "14) wait 1 second\n" +
-                "15) exit program\n");
+                "15) exit program\n" +
+                "\n===========================================================");
 
         while (flag){
             int event;
@@ -129,7 +131,8 @@ public class Main {
             }
 
 
-            System.out.println("Choose an event you want to launch:\n" +
+            System.out.println("\n=========================================================" +
+                    "\nChoose an event you want to launch:\n" +
                     "0)  turnON\n" +
                     "1)  turnOff\n" +
                     "2)  internetOn\n" +
@@ -145,7 +148,8 @@ public class Main {
                     "12) resume\n" +
                     "13) holdMovie\n" +
                     "14) wait 1 second\n" +
-                    "15) exit program\n");
+                    "15) exit program\n" +
+                    "\n===========================================================");
         }
     }
 
